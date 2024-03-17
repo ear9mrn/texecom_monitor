@@ -1,4 +1,4 @@
-"""Custom integration to integrate integration_blueprint with Home Assistant.
+"""Custom integration to integrate texecom_monitor with Home Assistant.
 
 For more details about this integration, please refer to
 https://github.com/ear9mrn/texecom_monitor
@@ -10,9 +10,9 @@ from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import IntegrationBlueprintApiClient
+from .api import TexecomMonitorApiClient
 from .const import DOMAIN
-from .coordinator import BlueprintDataUpdateCoordinator
+from .coordinator import TexecomDataUpdateCoordinator
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,
@@ -27,7 +27,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = coordinator = TexecomDataUpdateCoordinator(
         hass=hass,
-        client=IntegrationBlueprintApiClient(
+        client=TexecomMonitorApiClient(
             username=entry.data[CONF_USERNAME],
             password=entry.data[CONF_PASSWORD],
             session=async_get_clientsession(hass),
