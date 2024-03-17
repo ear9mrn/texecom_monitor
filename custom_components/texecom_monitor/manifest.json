@@ -1,0 +1,12 @@
+{
+  "domain": "texecom_monitor",
+  "name": "Texecom Monitor",
+  "codeowners": [
+    "@ear9mrn"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/ear9mrn/texecom_monitor",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/ear9mrn/texecom_monitor/issues",
+  "version": "0.0.0"
+}

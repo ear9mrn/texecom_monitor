@@ -1,7 +1,7 @@
 """Custom integration to integrate integration_blueprint with Home Assistant.
 
 For more details about this integration, please refer to
-https://github.com/ludeeus/integration_blueprint
+https://github.com/ear9mrn/texecom_monitor
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ PLATFORMS: list[Platform] = [
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
     hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = coordinator = BlueprintDataUpdateCoordinator(
+    hass.data[DOMAIN][entry.entry_id] = coordinator = TexecomDataUpdateCoordinator(
         hass=hass,
         client=IntegrationBlueprintApiClient(
             username=entry.data[CONF_USERNAME],

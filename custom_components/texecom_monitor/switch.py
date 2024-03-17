@@ -1,15 +1,16 @@
 """Switch platform for integration_blueprint."""
 from __future__ import annotations
 
-from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
+from homeassistant.components.switch import (SwitchEntity,
+                                             SwitchEntityDescription)
 
 from .const import DOMAIN
-from .coordinator import BlueprintDataUpdateCoordinator
-from .entity import IntegrationBlueprintEntity
+from .coordinator import TexecomDataUpdateCoordinator
+from .entity import TexecomMonitorEntity
 
 ENTITY_DESCRIPTIONS = (
     SwitchEntityDescription(
-        key="integration_blueprint",
+        key="texecom_monitor",
         name="Integration Switch",
         icon="mdi:format-quote-close",
     ),
@@ -20,7 +21,7 @@ async def async_setup_entry(hass, entry, async_add_devices):
     """Set up the sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_devices(
-        IntegrationBlueprintSwitch(
+        TexecomMonitorSwitch(
             coordinator=coordinator,
             entity_description=entity_description,
         )
@@ -28,12 +29,12 @@ async def async_setup_entry(hass, entry, async_add_devices):
     )
 
 
-class IntegrationBlueprintSwitch(IntegrationBlueprintEntity, SwitchEntity):
+class TexecomMonitorSwitch(TexecomMonitorEntity, SwitchEntity):
     """integration_blueprint switch class."""
 
     def __init__(
         self,
-        coordinator: BlueprintDataUpdateCoordinator,
+        coordinator: TexecomDataUpdateCoordinator,
         entity_description: SwitchEntityDescription,
     ) -> None:
         """Initialize the switch class."""
