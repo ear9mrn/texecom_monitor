@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import asyncio
 import socket
-
+from random import randint
 import aiohttp
 import async_timeout
 
@@ -31,11 +31,13 @@ class TexecomMonitorApiClient:
         self,
         username: str,
         password: str,
+        zone: str,
         session: aiohttp.ClientSession,
     ) -> None:
         """Sample API Client."""
         self._username = username
         self._password = password
+        self._zone = zone
         self._session = session
 
     async def async_get_data(self) -> any:
@@ -43,15 +45,18 @@ class TexecomMonitorApiClient:
         return await self._api_wrapper(
             method="get", url="https://jsonplaceholder.typicode.com/posts/1"
         )
+        #return randint(1, 100)
+        #return 1
 
     async def async_set_title(self, value: str) -> any:
         """Get data from the API."""
-        return await self._api_wrapper(
-            method="patch",
-            url="https://jsonplaceholder.typicode.com/posts/1",
-            data={"title": value},
-            headers={"Content-type": "application/json; charset=UTF-8"},
-        )
+        return "Test Entity"
+        #return await self._api_wrapper(
+        #    method="patch",
+        #    url="https://jsonplaceholder.typicode.com/posts/1",
+        #    data={"title": value},
+        #    headers={"Content-type": "application/json; charset=UTF-8"},
+        #)
 
     async def _api_wrapper(
         self,

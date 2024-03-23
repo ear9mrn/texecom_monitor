@@ -8,7 +8,7 @@ from .const import ATTRIBUTION, DOMAIN, NAME, VERSION
 from .coordinator import TexecomDataUpdateCoordinator
 
 
-class IntegrationBlueprintEntity(CoordinatorEntity):
+class TexecomMonitorEntity(CoordinatorEntity):
     """TexecomEntity class."""
 
     _attr_attribution = ATTRIBUTION
@@ -17,6 +17,7 @@ class IntegrationBlueprintEntity(CoordinatorEntity):
         """Initialize."""
         super().__init__(coordinator)
         self._attr_unique_id = coordinator.config_entry.entry_id
+        print(self.unique_id)
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, self.unique_id)},
             name=NAME,

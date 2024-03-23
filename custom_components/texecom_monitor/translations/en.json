@@ -5,7 +5,8 @@
                 "description": "If you need help with the configuration have a look here: https://github.com/ear9mrn/texecom_monitor",
                 "data": {
                     "username": "Username",
-                    "password": "Password"
+                    "password": "Password",
+                    "zone": "Zone"
                 }
             }
         },

@@ -6,7 +6,7 @@ https://github.com/ear9mrn/texecom_monitor
 from __future__ import annotations
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, Platform
+from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, CONF_ZONE, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
@@ -16,8 +16,8 @@ from .coordinator import TexecomDataUpdateCoordinator
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,
-    Platform.BINARY_SENSOR,
-    Platform.SWITCH,
+    #Platform.BINARY_SENSOR,
+    #Platform.SWITCH,
 ]
 
 
@@ -30,6 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         client=TexecomMonitorApiClient(
             username=entry.data[CONF_USERNAME],
             password=entry.data[CONF_PASSWORD],
+            zone=entry.data[CONF_ZONE],
             session=async_get_clientsession(hass),
         ),
     )

@@ -1,11 +1,11 @@
-"""Binary sensor platform for itexecom_monitor."""
+"""Binary sensor platform for texecom_monitor."""
 from __future__ import annotations
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass, BinarySensorEntity, BinarySensorEntityDescription)
 
 from .const import DOMAIN
-from .coordinator import TexecomMonitorUpdateCoordinator
+from .coordinator import TexecomDataUpdateCoordinator
 from .entity import TexecomMonitorEntity
 
 ENTITY_DESCRIPTIONS = (
@@ -29,8 +29,8 @@ async def async_setup_entry(hass, entry, async_add_devices):
     )
 
 
-class IntegrationBlueprintBinarySensor(TexecomMonitorEntity, BinarySensorEntity):
-    """integration_blueprint binary_sensor class."""
+class TexecomMonitorBinarySensor(TexecomMonitorEntity, BinarySensorEntity):
+    """texecom_monitor binary_sensor class."""
 
     def __init__(
         self,

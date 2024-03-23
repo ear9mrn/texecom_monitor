@@ -7,12 +7,14 @@ from homeassistant.components.sensor import (SensorEntity,
 from .const import DOMAIN
 from .coordinator import TexecomDataUpdateCoordinator
 from .entity import TexecomMonitorEntity
+#import time
 
 ENTITY_DESCRIPTIONS = (
     SensorEntityDescription(
-        key="integration_blueprint",
+        key="texecom_monitor",
         name="Integration Sensor",
-        icon="mdi:format-quote-close",
+        #icon="mdi:format-quote-close",
+        icon="mdi:door-closed",
     ),
 )
 
@@ -44,4 +46,9 @@ class TexecomMonitorSensor(TexecomMonitorEntity, SensorEntity):
     @property
     def native_value(self) -> str:
         """Return the native value of the sensor."""
-        return self.coordinator.data.get("body")
+        #print(self.coordinator.data.get("body"))
+        #t = time.localtime()
+        #current_time = time.strftime("%H:%M:%S", t)
+        #print(current_time)
+        #return self.coordinator.data.get("body")
+        return "66"
